@@ -21,5 +21,27 @@ Modelling such a dataset is very difficult because of curse of dimensionality wh
 ### Principal Component Analysis
 Principal Component Analysis was used to counter curse of dimensionality. Escaping the curse was crucial for our clustering algorithms because reduced dimension have three fold benefits :- 1) Lighter Computational Workload  2)Less Dimensional redundancy  3) More Effective Distance Metrics. PCA is dimension-reduction tool that is used to reduce a large set of variables to a small number of factors while preserving the variance between the data points. 
 
+### K-Means
+
+k means clustering is an unsupervised clustering algorithm that groups n different observations into k unique clusters where k < n. 
+The algorithm clusters data points of similar features based on some parameter, usually Euclidean distance. Clusters are formed 
+in a way to maximize inter cluster similarity. This can be achieved by minimizing within cluster sum of squares,defined as
+ 
+ 
+K means algorithm requires the practitioner to enter the value of parameter k. The optimum value of k can be chosen based on sum 
+of squared error (SSE) or advanced statistical measures such as gap statistic. 
+
+Nonetheless, analytical methods often result in complicated clusters. Since, clustering requires human interpretation to make 
+conclusions
+The k means algorithm presented in the paper employed euclidean distance for clustering. The parameter k was set to 5 for two 
+reasons. First, DBSCAN algorithm gave the best results for k = 5. Second, cluster sizes were comparable making it easier to interpret 
+similarities. The dataset used is very sparse and high dimensional in nature. Generally, distance based clustering algorithms 
+performs quite poorly on such datasets. One reasonable explanation for the former statement is the exponential increase 
+in euclidean distance as dimension grows. Principal component analysis was used for dimension reduction to minimize the effect 
+of curse of dimensionality. However, it was still difficult to understand the association between movies. Some observable patterns 
+exist between movies belonging to the same cluster but these patterns cannot be generalized for all the data points in the cluster. 
+
+
+
 ### DB-SCAN Clustering
 DB-SCAN is a clustering algorithm that focuses on separating clusters of high density from low density. Thus, it is a **D**ensity **B**ased **C**lusetring **A**lgorithm which sorts the data into clusters of varying shape. 

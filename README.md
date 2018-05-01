@@ -44,4 +44,10 @@ exist between movies belonging to the same cluster but these patterns cannot be 
 
 
 ### DB-SCAN Clustering
-DB-SCAN is a clustering algorithm that focuses on separating clusters of high density from low density. Thus, it is a **D**ensity **B**ased **C**lusetring **A**lgorithm which sorts the data into clusters of varying shape. 
+DB-SCAN is a clustering algorithm that focuses on separating clusters of high density from low density. Thus, it is a **D**ensity **B**ased **C**lusetring **A**lgorithm which sorts the data into clusters of varying shape. The basic idea is that if a point belongs to a cluster then it must be near to a lot of other points which are also in that cluster. DBSCAN Algorithm takes up two parameters- first is a positive number epsilon and second is the minimum number of points. Randomly points are picked from the dataset and if there are more than minimum number of points within a distance a of epsilon from the selected point then they all are assigned to one same cluster. Then other points are selected checking whether they too have more than minimum number of points within an epsilon distance so that they could be added to the cluster. When all of the points are exhausted, a point is again selected at random and the whole process is repeated again. Psuedo Code of DBSCAN is as follows:-
+
+
+One advantage of DBSCAN algorithm is that unlike K-means it does not require the user to provide the number of clusters beforehand. It gives the user the number of inherent cluster which are present in the data as an output to the user. To get a sense of consistency of the clusters that are formed by DBSCAN we have used a silhouette score as a metric. Silhouette score measures the amount of cohesion within a cluster as comapred to other clusters(separation). Silhouette score's value is between -1 to +1 and a higher value indicates that a datapoint is very similar to its own cluster and dissimilar to other neighbouring clusters. This silhouette score is calculated by Eucledian distance metric.
+
+
+

@@ -1,0 +1,19 @@
+k means clustering:
+k means clustering is an unsupervised clustering algorithm that groups n different observations into k unique clusters where k < n. 
+The algorithm clusters data points of similar features based on some parameter, usually Euclidean distance. Clusters are formed 
+in a way to maximize inter cluster similarity. This can be achieved by minimizing within cluster sum of squares,defined as
+ 
+ 
+K means algorithm requires the practitioner to enter the value of parameter k. The optimum value of k can be chosen based on sum 
+of squared error (SSE) or advanced statistical measures such as gap statistic. 
+
+Nonetheless, analytical methods often result in complicated clusters. Since, clustering requires human interpretation to make 
+conclusions
+The k means algorithm presented in the paper employed euclidean distance for clustering. The parameter k was set to 5 for two 
+reasons. First, DBSCAN algorithm gave the best results for k = 5. Second, cluster sizes were comparable making it easier to interpret 
+similarities. The dataset used is very sparse and high dimensional in nature. Generally, distance based clustering algorithms 
+performs quite poorly on such datasets. One reasonable explanation for the former statement is the exponential increase 
+in euclidean distance as dimension grows. Principal component analysis was used for dimension reduction to minimize the effect 
+of curse of dimensionality. However, it was still difficult to understand the association between movies. Some observable patterns 
+exist between movies belonging to the same cluster but these patterns cannot be generalized for all the data points in the cluster. 
+

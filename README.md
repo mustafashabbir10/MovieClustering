@@ -6,11 +6,11 @@ What makes a good movie? Most of the top-rated movies in the International movie
     
 ## Dataset and Features
 Our dataset is composed of the top 250 movies based on IMDB rating. We used data directly from OMBD's API which provided every detail about the more than 5000 movies. From this dataset we subsetted the top movies based on IMDB's list. The movie plot in the OMDB was just a 2 line synopses so we decided to scrape movie summary of every movie from IMDB's website. This was done to include important and frequent words of a plot and make them as features for clustering. From the data obtained from querying OMDB's API we cleaned every column and finally decided to include Runtime, Plot, Genre, Actors, Director, Writer, Year of release, Country and Language since the rest of the columns were not relevant such as IMDB rating, IMDB ID.
-        ![OMDB DataFrame](https://github.com/mustafashabbir10/MovieClustering/blob/master/images/omdbdf.PNG=centerme)
+        ![OMDB DataFrame](https://github.com/mustafashabbir10/MovieClustering/blob/master/Images/omdb.PNG)
 
                     The above dataframe shows the features that we got from querying OMDB's web API.      
 The main challenge was to extract relevant words from the plots which could be used as features for clustering. First step in plot preprocessing was to tokenize the text and remove punctuations and other noise from it. Next, was to remove all the stopwords which do not provide any meaningful information. After the initial cleaning of the text, TF-IDF technique was to used to get important and relevant features from the text. TF-IDF is a term frequency-inverse document frequency is a statistic that reflects how important a word is to a document in a collection of other documents. We chose TF-IDF statistic because it acts as a content descriptive mechanism for the plots. The term TF is the number of times a term appears in a movie plot and IDF measures the rarity of the term in the whole corpus of plots. Thus, TF-IDF provides a measure of uniqueness and will output words that are somewhat unique for plots. We used Tf-IDF because it gives high weights to words that are representative of a movie plot but do not occur too often across all the plots. This gives a uniqueness indicator and thus plots which have words having similar uniqueness indicators must be clustered together. Based on the list that TF-IDF gave us we chose the top important words which are-
-           ![Top 20 words](https://github.com/mustafashabbir10/MovieClustering/blob/master/images/top20words.PNG)
+           ![Top 20 words](https://github.com/mustafashabbir10/MovieClustering/blob/master/Images/top20words.PNG)
 
 All of these words were important according to tf-idf statistic. We can immediately see that there were some usual themes such as war, love, murder. One another important observation is that all of the words have a male connotation boy, man, son which represents the backlash that academy has been facing for under representation of females and minorities. After identification of the important words, one hot encoding was performed for every word and respective dummy columns were created where if a movie had that word it was assigned a value of 1 otherwise 0.
 
@@ -26,16 +26,15 @@ Principal Component Analysis was used to counter curse of dimensionality. Escapi
 k means clustering is an unsupervised clustering algorithm that groups n different observations into k unique clusters where k < n. 
 The algorithm clusters data points of similar features based on some parameter, usually Euclidean distance. Clusters are formed 
 in a way to maximize inter cluster similarity. This can be achieved by minimizing within cluster sum of squares,defined as
- 
+ ![kmeans](https://github.com/mustafashabbir10/MovieClustering/blob/master/Images/kmeaneq.PNG)
  
 K means algorithm requires the practitioner to enter the value of parameter k. The optimum value of k can be chosen based on sum 
 of squared error (SSE) or advanced statistical measures such as gap statistic. 
 
 Nonetheless, analytical methods often result in complicated clusters. Since, clustering requires human interpretation to make 
-conclusions
-The k means algorithm presented in the paper employed euclidean distance for clustering. The parameter k was set to 5 for two 
-reasons. First, DBSCAN algorithm gave the best results for k = 5. Second, cluster sizes were comparable making it easier to interpret 
-similarities. The dataset used is very sparse and high dimensional in nature. Generally, distance based clustering algorithms 
+conclusions its easier if the number of instances in a particular cluster is less.
+The k means algorithm presented in the paper employed euclidean distance for clustering. The parameter k was set to 13 for two 
+reasons. First, DBSCAN algorithm gave the best results for k = 13. Generally, distance based clustering algorithms 
 performs quite poorly on such datasets. One reasonable explanation for the former statement is the exponential increase 
 in euclidean distance as dimension grows. Principal component analysis was used for dimension reduction to minimize the effect 
 of curse of dimensionality. However, it was still difficult to understand the association between movies. Some observable patterns 

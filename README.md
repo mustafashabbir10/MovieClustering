@@ -94,4 +94,14 @@ In this project, we scrapped our dataset using OMDB's API and IMDB. This dataset
 
 DBSCAN gave us the optimum number of clusters in our dataset and then K-Means was applied to get really interpreatble cluster. We have only shown 5 out of a total of 13 clusters. The output of the analysis can be used and cross referenced against large dataset of movie to see what better clusters can be obtained. We see a similar algorithm for movie prediction in Netflix and other webservices which use recommender system. Thus, this concept can be further extended to create efficient recommender systems
 
+## References
+1) Rose, B. (n.d.). Document clustering with python. Retrieved from http://brandonrose.org/clustering
+2) Data Mining Algorithms In R/Clustering/K-Means. (n.d.). Retrieved from Wikibooks: https://en.wikibooks.org/wiki/Data_Mining_Algorithms_In_R/Clustering/K-Means
+3) Man,Han. Data Clustering Using Unsupervised Learning, 2017
+4) Huang, A., 2008. Similarity measures for text document clustering. In: Proceedings of the
+Sixth New Zealand Computer Science Research Student Conference, pp. 49–56.
+
+
+
+
 

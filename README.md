@@ -51,6 +51,48 @@ One advantage of DBSCAN algorithm is that unlike K-means it does not require the
 
 ## Results and Discussion
 #### A. *Principal Component Analysis*
-Prior to a fitting a clustering algorithm we used PCA to counter the curse of dimensionality. We decided to include those components which explain more than 1% variance in the data. Through this we got 39 components which explain 75% variation in the dataset. We further decided to take a look in the first principal component of the support vector 
+Prior to a fitting a clustering algorithm we used PCA to counter the curse of dimensionality. We decided to include those components which explain more than 1% variance in the data. Through this we got 39 components which explain 75% variation in the dataset. We further decided to take a look in the first principal component to check which features were most important in our principal component.
+![PCA](https://github.com/mustafashabbir10/MovieClustering/blob/master/Images/PCA.PNG)
+
+We see from the above figure that movies with genre Action and Family have the highest weights. Thus, it is important for a movie to be Action or Family to be in the Top 250. 
+
+#### B. *DBSCAN Clustering*
+After performing PCA we fit a DBSCAN clustering algorithm on the data. Since we do not know any inherent number of clusters in the data, we use dbscan to find them. To find the optimal clusters we cycled through a number of values of epsilon and min_samples and evaluated a corresponding silhouette score. The pair of value having the best and most interpretable silhouette score was chosen. This best performing DBSCAN algorithm gave 13 clusters. This number of clusters obtained from DBSCAN was used in K-Means algorithm. 
+
+Since the data is sparse we observe that DBSCAN clustering does not perform well in clustering similar movies. The value of epsilon which was chosen was 6 and minimum samples 3. Due to lack of dense data dbscan made 10 clusters of 3 movies which were similar but did not provide any compelling evidence to our case. Thus, dbscan was only used the optimal number of clusters in our dataset.
+
+#### C. *K-Means Clustering*
+After getting the number of clusetrs from DBSCAN we used K-Means to cluster our dataset. Inspite of our categorical we still used K-Means to cluster our dataset rather than K-Modes because K-Modes forces the centroid to take on majority features value without indicating wether the datapoints in the cluster are in strong agreement. Thus, to avoid this we proceed with K-Means clusetring only.
+
+##### *Manual Labeling*
+We attempt to determine a common theme of every movie cluster that is formed by examining and interpreting the attributes of the movies that have been clustered together.
+
+##### Group 1:
+![Cluster0](https://github.com/mustafashabbir10/MovieClustering/blob/master/Images/Cluster2.PNG)
+Based on the movies in this cluster we can name this group as **Action/Adventure Conflicts**. These movies are based on the theme of War, Action, Violence and Adventure and include a mix of real and fantasy movies for example Avengers, Pirates of the Carribean, Inglourius Basterds, The Matrix, V for Vandetta, Terminator etc . The main theme of many movies in this cluster is real or fantasy Violence, vengence or War. This cluster has also grouped long biographical epics from different eras and different countries together for example Gandhi, Lawrence of Arabia and Barry Lyndon. All three of these epics are based on the theme of war and happen in different countries. 
+
+##### Group 2:
+![Cluster0](https://github.com/mustafashabbir10/MovieClustering/blob/master/Images/Cluster3.PNG)
+Based on the movies in this cluster we can name this group as **Animation** Group. All of these movies are animated having a genre of Family and Film-Noir. This cluster is dominated by Hayao Miyazaki a Japanese film director and Manga Artist. Majority of the animated movies are directed by Hayao Miyazaki and involve the theme of adventure by a child either to free or in search of its parent or describes a struggle for survival. 
+
+##### Group 3:
+![Cluster0](https://github.com/mustafashabbir10/MovieClustering/blob/master/Images/CLuster6.PNG)
+Based on the movies of this group we can name it **Criminal Thriller** This group has movies which have a theme on drug lords, violence, prison, crime and courtroom drama for example Shawshank Redemption, Godfather, Angry Men, Kill Bill, Cool Hand Luke, City of God, Leon:The Professional, Touch of Evil, American History X etc. All of these movies are long and not recent (except Kill Bill) and revolve around the aforementioned theme. This cluster groups all movies which primarily focus on crime and murder. This is a very pure cluster as one can see if they want to make a criminal thriller they can analyze and include all of the characteristics of such movies.
+
+##### Group 4:
+![Cluster0](https://github.com/mustafashabbir10/MovieClustering/blob/master/Images/Cluster4.PNG)
+This is a pure Christopher Nolan cluster. He works majorly with Christian Bale and has recent Sci-fi movies.
+
+##### Group 5:
+![Cluster0](https://github.com/mustafashabbir10/MovieClustering/blob/master/Images/Cluster11.PNG)
+Similarly this is a pure Martin Scorsese cluster. His work focus majorly on the theme of a successful man taking a downward spiral in his career beacuse of crime, love, money or drugs.
+
+Group 4 and Group 5 have been monopolized by two directors Nolan and Scorsese. These amazing creators have their own clusters and theme which have become a recepie of success for many other directors.
+
+
+## Conclusion
+In this project, we scrapped our dataset using OMDB's API and IMDB. This dataset was sparse and contained 100 categorical features and 1 numerical feature. This was a very daunting task for any modeler to work with such a dataset which is full of dummy varaibles. CLustering on a such a dataset was a very challenging part. Two different clustering algorithms DBSCAN and K-means were applied and studied. PCA was also performed on the dataset to reduce the dimension and escape the curse of dimensionality. 
+
+DBSCAN gave us the optimum number of clusters in our dataset and then K-Means was applied to get really interpreatble cluster. We have only shown 5 out of a total of 13 clusters. The output of the analysis can be used and cross referenced against large dataset of movie to see what better clusters can be obtained. We see a similar algorithm for movie prediction in Netflix and other webservices which use recommender system. Thus, this concept can be further extended to create efficient recommender systems
 
 

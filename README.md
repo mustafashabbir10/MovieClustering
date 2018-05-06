@@ -25,7 +25,8 @@ Principal Component Analysis was used to counter curse of dimensionality. Escapi
 
 k means clustering is an unsupervised clustering algorithm that groups n different observations into k unique clusters where k < n. 
 The algorithm clusters data points of similar features based on some parameter, usually Euclidean distance. Clusters are formed 
-in a way to maximize inter cluster similarity. This can be achieved by minimizing within cluster sum of squares,defined as
+in a way to maximize inter cluster similarity. This can be achieved by minimizing within cluster sum of squares,  
+defined as
  ![kmeans](https://github.com/mustafashabbir10/MovieClustering/blob/master/Images/kmeaneq.PNG)
  
 K means algorithm requires the practitioner to enter the value of parameter k. The optimum value of k can be chosen based on sum 
